@@ -18,4 +18,7 @@ const doPromise = new Promise((resolve, reject) => {
     .catch(error => console.log(error))
 
 
+  console.log('otra linea');  
+
+
 
