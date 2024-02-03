@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Contactos - Funciones</h1>
+    <script>
+        let contacts = [
+            {
+                name: "Maxwell Wright",
+                phone: "(0191) 719 6495",
+                email: "Curabitur@nonummyac.co.uk"
+            },
+            {
+                name: "Raja Villarreal",
+                phone: "0866 398 2895",
+                email: "posuere@sed.com"
+            },
+            {
+                name: "Helen Richards",
+                phone: "0800 1111",
+                email: "libero@convallis.edu"
+            }];
+        let isOver = false
+        while (!isOver) {
+            let opcion = prompt(`          
+                                    Escoge las siguiente opciones :
+                                    a.- Mostrar el primer contacto 👨
+                                    b.- Mostrar el ultimo contacto 👩
+                                    c.- Añadir un nuevo contacto 👨‍🦰
+                                    d.- Mostrar todos los contactos
+                                    e.- Ordenar la lista de contactos 
+                                    f.- salir
+                                    `)
+    let result = opcion === 'a' ? 
+    alert(`${showContact(contacts, 0)}`) : opcion === 'b' ?
+    alert(`${showContact(contacts, contacts.length - 1)}`) : opcion === 'c' ? 
+    alert(mostrarNuevoContacto(contacts)) : opcion === 'd' ?
+    showAllContacts(contacts) : opcion==='e'? opcionParaOrdenarLaLista(contacts):opcion === 'f' ? 
+        isOver = true : mostrarMensajeOpcionIncorrecta()
+        }
+
+       function mostrarNuevoContacto(contacts) {
+            let nuevoContactoName = prompt('Ingrese el nombre')
+            let nuevoContactoTelefono = prompt('Ingrese el telefono')
+            let nuevoContactoEmail = prompt('Ingrese el email')
+            return addANewContact(contacts, nuevoContactoName, nuevoContactoTelefono, nuevoContactoEmail)
+        }
+       function mostrarMensajeOpcionIncorrecta() {
+            isOver= false
+            alert('Ingrese nuevamente una opción válida')
+        }
+       function showContact(contacts,indice) {
+            if (!contacts instanceof Array) {
+                return
+            }
+            let contact = contacts[indice]
+            return `${contact.name} - ${contact.phone} - ${contact.email}`
+        }
+
+       function showAllContacts(contacts) {
+            if (!contacts instanceof Array) {
+                return
+            }
+            for (const contact of contacts) {
+                alert(`${contact.name} - ${contact.phone} - ${contact.email}`)
+            }
+        }
+       function addANewContact(contacts, nombre, telefono, email) {
+            if (contacts instanceof Array && nombre && telefono && email) {
+                let nuevoContacto = { name: nombre, phone: telefono, email: email }
+                contacts.push(nuevoContacto)
+                return `${nuevoContacto.name} - ${nuevoContacto.phone} - ${nuevoContacto.email}`
+            }
+        }
+        function shortContactsName(contacts) {
+            let contactosOrdenados= contacts.sort((a,b)=>{
+                     let nombreA= a.name.toLowerCase()
+                     let nombreB= b.name.toLowerCase()
+                     if (nombreA<nombreB) {
+                            return -1
+                     } else if(nombreA>nombreB){
+                        return 1
+                     } else {
+                        return 0
+                     }
+            })
+            for (const contact of contactosOrdenados) {
+                alert(`${contact.name} / ${contact.phone}/${contact.email}`)
+            }
+        }
+        function shortContactsPhone(contacts) {
+            let contactosOrdenados= contacts.sort((a,b)=>{
+                     let phoneA= a.name.toLowerCase()
+                     let phoneB= b.name.toLowerCase()
+                     if (phoneA<phoneB) {
+                            return -1
+                     } else if(phoneA>phoneB){
+                        return 1
+                     } else {
+                        return 0
+                     }
+            })
+            for (const contact of contactosOrdenados) {
+                alert(`${contact.name} / ${contact.phone}/${contact.email}`)
+            }
+        }
+        function shortContactsEmail(contacts) {
+            let contactosOrdenados= contacts.sort((a,b)=>{
+                     let emailA= a.name.toLowerCase()
+                     let emailB= b.name.toLowerCase()
+                     if (emailA<emailB) {
+                            return -1
+                     } else if(emailA>emailB){
+                        return 1
+                     } else {
+                        return 0
+                     }
+            })
+            for (const contact of contactosOrdenados) {
+                alert(`${contact.name} / ${contact.phone}/${contact.email}`)
+            }
+        }
+
+
+function opcionParaOrdenarLaLista(contacts) {
+    let isOver=false
+    while (!isOver) {
+        let opcion=prompt(` 
+                1.- Ordenar los contactos por Nombre
+                2.- Ordenar los contactos por Telefono
+                3.- Ordenar los contactos por Correo
+                4.- volver
+            
+        `)
+        switch (opcion) {
+            case '1':
+                shortContactsName(contacts)
+                break;
+            case '2':
+                shortContactsPhone(contacts)
+                break;
+            case '3':
+                shortContactsEmail(contacts)
+                break;
+            case '4':
+                isOver=true
+            default:
+                break;
+        }
+        
+    }
+}
+
+    </script>
+</body>
+
+</html>

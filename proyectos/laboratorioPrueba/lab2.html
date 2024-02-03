@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Contactos - Bucles</h1>
+    <script>
+        let contacts = [
+    {
+    name: "Maxwell Wright",
+    phone: "(0191) 719 6495",
+    email: "Curabitur@nonummyac.co.uk"
+    },
+     {
+    name: "Raja Villarreal",
+    phone: "0866 398 2895",
+    email: "posuere@sed.com"
+    },
+     {
+    name: "Helen Richards",
+    phone: "0800 1111",
+    email: "libero@convallis.edu"
+    }];
+
+//! Mostrar el primer contacto (primero)
+//! Mostrar el último contacto (último)
+
+//! Añadir un nuevo contacto (nuevo)
+
+// Primera solucion
+// let opcion=prompt(`          
+// Escoge las siguiente opciones :
+// a.- Mostrar el primer contacto 👨
+// b.- Mostrar el ultimo contacto 👩
+// c.- Añadir un nuevo contacto 👨‍🦰
+// `) 
+// switch (opcion) {
+//         case 'a':
+//             let primerContacto= contacts[0]
+//             alert(`Nombre : ${primerContacto.name}/ Telefono : ${primerContacto.phone} / Email : ${primerContacto.email}`);
+//             break;
+//             case 'b':
+//                 let ultimoContacto= contacts[contacts.length-1]
+//                 alert(`Nombre : ${ultimoContacto.name}/ Telefono : ${ultimoContacto.phone} / Email : ${ultimoContacto.email}`);
+//                 break;
+//                 case 'c':
+//                     let nuevoContactoNombre=prompt(`Ingrese el nombre`)
+//                     let nuevoContactoEmail=prompt(`Ingrese el email`)
+//                     let nuevoContactoTelefono=prompt(`Ingrese el telefono`)
+//                     let nuevoContacto= {
+//                     name: nuevoContactoNombre,
+//                     phone: nuevoContactoTelefono,
+//                     email: nuevoContactoEmail
+//                 }
+//                 contacts.push(nuevoContacto)
+//                 alert(`Nombre : ${nuevoContacto.name}/ Telefono : ${nuevoContacto.phone} / Email : ${nuevoContacto.email}`);
+//                     break;
+//                     default:
+//                         alert('Opción incorrecta, ingrese nuevamente una opción 🛑');
+//                 break;
+//         }
+        // Segunda Forma
+
+        let isOver= false
+        while (!isOver) {
+            let opcion = prompt(`          
+                                    Escoge las siguiente opciones :
+                                    a.- Mostrar el primer contacto 👨
+                                    b.- Mostrar el ultimo contacto 👩
+                                    c.- Añadir un nuevo contacto 👨‍🦰
+                                    d.- salir 
+                                    `) 
+            let result= opcion ==='a' ?  alert(`Nombre : ${contacts[0].name}/ Telefono : ${contacts[0].phone} / Email : ${contacts[0].email}`): opcion ==='b' ?  alert(`Nombre : ${contacts[contacts.length-1].name}/ Telefono : ${contacts[contacts.length-1].phone} / Email : ${contacts[contacts.length-1].email}`):opcion==='c'? alert(mostrarNuevoContacto()) : opcion === 'd' ? isOver=true : mostrarMensajeOpcionIncorrecta()
+        }
+
+        function mostrarNuevoContacto() {
+            let nuevoContactoName=prompt('Ingrese el nombre')
+            let nuevoContactoTelefono=prompt('Ingrese el telefono')
+            let nuevoContactoEmail=prompt('Ingrese el email')
+            let nuevoContacto={
+                name: nuevoContactoName,
+                email:nuevoContactoEmail,
+                phone:nuevoContactoTelefono
+            }
+            return `Nombre : ${nuevoContacto.name}/ Telefono : ${nuevoContacto.phone} / Email : ${nuevoContacto.email}`
+        }
+            function mostrarMensajeOpcionIncorrecta() {
+        isOver=false
+        alert('Ingrese nuevamente una opción válida')
+       } 
+
+
+    </script>
+</body>
+</html>
