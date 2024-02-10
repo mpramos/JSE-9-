@@ -75,6 +75,14 @@ const products = [
   let sum=products.filter(product=> typeof product.price ==='number').reduce((suma,product)=> suma+ product.price,0)
   console.log(sum);
 
+   user={
+    nombre:'',
+    edad:35
+   }
+  function nombres(a,b) {
+    return {a:a,b:b}
+  } 
+  console.log(nombres('juana','fernanda'));
    
-   
-   
+
+
